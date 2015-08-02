@@ -14,17 +14,16 @@
 #define RSTRING_LEN(s) (RSTRING(s)->len)
 #endif
 
-#ifndef RUBY_API_VERSION_MAJOR
 static int
 ruby_version_before_2_2()
 {
+  printf(ruby_version);
   if (RUBY_API_VERSION_MAJOR < 2 || (RUBY_API_VERSION_MAJOR == 2 && RUBY_API_VERSION_MINOR < 2)) {
     return 1;
   } else {
     return 0;
   }
 }
-#endif
 
 static VALUE
 rb_str_blank_as(VALUE str)
