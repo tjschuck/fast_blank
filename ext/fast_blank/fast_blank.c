@@ -17,11 +17,12 @@
 static int
 ruby_version_before_2_2()
 {
+  #ifdef RUBY_API_VERSION_MAJOR
   if (RUBY_API_VERSION_MAJOR < 2 || (RUBY_API_VERSION_MAJOR == 2 && RUBY_API_VERSION_MINOR < 2)) {
     return 1;
-  } else {
-    return 0;
   }
+  #endif
+  return 0;
 }
 
 static VALUE
@@ -38,7 +39,7 @@ rb_str_blank_as(VALUE str)
   while (s < e) {
     int n;
     unsigned int cc = rb_enc_codepoint_len(s, e, &n, enc);
-  printf(ruby_version);
+
     switch (cc) {
       case 9:
       case 0xa:
