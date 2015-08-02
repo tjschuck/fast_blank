@@ -18,11 +18,11 @@ static int
 ruby_version_before_2_2()
 {
   #ifdef RUBY_API_VERSION_MAJOR
-  if (RUBY_API_VERSION_MAJOR < 2 || (RUBY_API_VERSION_MAJOR == 2 && RUBY_API_VERSION_MINOR < 2)) {
-    return 1;
+  if (RUBY_API_VERSION_MAJOR > 2 || (RUBY_API_VERSION_MAJOR == 2 && RUBY_API_VERSION_MINOR >= 2)) {
+    return 0;
   }
   #endif
-  return 0;
+  return 1;
 }
 
 static VALUE
