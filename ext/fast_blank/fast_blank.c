@@ -14,6 +14,7 @@
 #define RSTRING_LEN(s) (RSTRING(s)->len)
 #endif
 
+#ifndef RUBY_API_VERSION_MAJOR
 static int
 ruby_version_before_2_2()
 {
@@ -23,6 +24,7 @@ ruby_version_before_2_2()
     return 0;
   }
 }
+#endif
 
 static VALUE
 rb_str_blank_as(VALUE str)
